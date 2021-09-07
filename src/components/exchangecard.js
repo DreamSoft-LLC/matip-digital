@@ -1,0 +1,33 @@
+import React, { useEffect, useState } from 'react'
+import { API_KEY_CRYPTO } from '../constant'
+
+
+export default function ExchangeCard({wide}) {
+    const [currencies, setCurrencies] = useState([])
+
+    function GetPrices() {
+        fetch(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY_CRYPTO}&ids=BTC,ETH,XRP,XMR&interval=1h,1d&convert=USD&per-page=100&page=1`)
+            .then(response => response.json())
+            .then(data => {setCurrencies(data)});
+    }
+
+    useEffect(() => {
+        GetPrices();
+    }, [])
+
+    return (
+        <div className={`flex py-5 flex-wrap bg-white border justify-between ${wide === true ? '' : 'container mx-auto'} px-10 shadow mt-3 space-y-3`}>
+            {currencies.map((data, index) => (
+                <div className="flex items-center space-x-2" key={index.toString()}>
+                    <div className="border-2 rounded-full p-3">
+                        <img className="h-10 w-10" src={data.logo_url} />
+                    </div>
+                    <div>
+                        <h5 className="font-semibold">{data.name}</h5>
+                        <h5 className="font-extrabold text-blue-700">${data.price}</h5>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+}

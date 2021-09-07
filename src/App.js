@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter , Route} from "react-router-dom"
+import PrivateRoute from "./components/privateRoute";
+import PublicRoute from "./components/publicRoute";
+import Aboutus from "./pages/aboutus";
+import Contactus from "./pages/contactus";
+import Dashboard from "./pages/dashboard";
+import Earnings from "./pages/earnings";
+import Landing from "./pages/landing";
+import Login from "./pages/login";
+import Payment from "./pages/payment";
+import Signup from "./pages/signup";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter >
+        <Route exact  path="/" component={Landing} />
+        <PublicRoute restricted  path="/login" component={Login} />
+        <PublicRoute restricted path="/signup" component={Signup} />
+        <Route path="/about-us" component={Aboutus} />
+        <Route path="/contact" component={Contactus} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/payment" component={Payment} />
+    </BrowserRouter>
   );
 }
 
