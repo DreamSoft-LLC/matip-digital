@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { API_KEY_CRYPTO } from '../constant'
 
@@ -6,9 +7,10 @@ export default function ExchangeCard({wide}) {
     const [currencies, setCurrencies] = useState([])
 
     function GetPrices() {
-        fetch(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY_CRYPTO}&ids=BTC,ETH,XRP,XMR&interval=1h,1d&convert=USD&per-page=100&page=1`)
-            .then(response => response.json())
-            .then(data => {setCurrencies(data)});
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY_CRYPTO}&ids=BTC,ETH,XRP,XMR&interval=1h,1d&convert=USD&per-page=100&page=1`)
+        .then(res=>setCurrencies(res.data))
+        .catch(err=>console.log(err))
     }
 
     useEffect(() => {
