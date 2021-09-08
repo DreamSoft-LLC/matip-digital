@@ -18,15 +18,15 @@ export default function ExchangeCard({wide}) {
     }, [])
 
     return (
-        <div className={`flex py-5 flex-wrap bg-white border justify-between ${wide === true ? '' : 'container mx-auto'} px-10 shadow mt-3 space-y-3`}>
+        <div className={`flex py-5 flex-wrap bg-white border justify-between ${wide === true ? '' : 'container mx-auto'} px-10 shadow mt-0 space-y-3`}>
             {currencies.map((data, index) => (
                 <div className="flex items-center space-x-2" key={index.toString()}>
                     <div className="border-2 rounded-full p-3">
-                        <img className="h-10 w-10" src={data.logo_url} />
+                        <img className="h-8 w-8" src={data.logo_url} />
                     </div>
                     <div>
                         <h5 className="font-semibold">{data.name}</h5>
-                        <h5 className="font-extrabold text-blue-700">${data.price}</h5>
+                        <h5 className="font-extrabold text-blue-700">${Math.round(data.price*100)/100}</h5>
                     </div>
                 </div>
             ))}

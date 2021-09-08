@@ -4,34 +4,34 @@ import { Link } from 'react-router-dom';
 import ExchangeCard from '../components/exchangecard';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
-const cover = "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=100";
-
+const cover = "https://www.worldremit.com/public-assets/static/0af33684ea8c8dabfb738fcf30059588/c8563/background-image-relaunch-desktop.webp";
+const trtp = "https://www.worldremit.com/public-assets/static/437a484335c5343feda385609ca6528a/logo-white-trustpilot-copy.svg"
 
 export default function Landing({ history }) {
     return (
         <div>
-            <Navbar history={history} />
-            <div className="flex flex-col h-96 md:min-h-screen" style={{backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
-                <div className="hidden md:flex items-center justify-center bg-black bg-opacity-50 text-white font-semibold space-x-5 py-10">
-                    <Link to="/">Homepage</Link>
-                    <Link to="/about-us">About us</Link>
-                    <Link to="/terms-of-services">Terms of services</Link>
-                    <Link to="/contact">Contact us</Link>
-                </div>
-                <div className="flex justify-center items-center flex-1 px-3">
-                    <div className="text-center">
-                        <h2 className="font-extrabold text-white uppercase">The trusted investment partner.</h2>
-                        <div className="uppercase text-4xl font-extrabold text-white">
-                            <h3 >BETTER RETURN ON INVESTMENT</h3>
-                            <p className="text-blue-500">
-                                PURHASE BOTS TO WORK ON YOUR BEHALVES.
-                            </p>
+            <div className="flex flex-col h-96 md:min-h-screen" style={{ backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#0000003d', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
+               <Navbar/>
+                <div className="flex justify-start items-center flex-1 px-3 md:pl-20">
+                    <div className="space-y-5 w-full md:w-1/2">
+                        <h2 className="font-bold md:text-xl text-white capitalize">The trusted investment partner.</h2>
+                        <div className="capitalize text-2xl md:text-6xl font-bold text-white space-y-4">
+                            <h3 className="capitalize">Better Returns on investment funds</h3>
+                            
+                        </div>
+                        <div className="flex items-center space-x-5">
+                            <img src={trtp}/>
+
+                            <div className="border-l-2 border-white pl-5 text-sm md:text-xl text-white">
+                                <p>Great</p>
+                                <p>300+ Reviews</p>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <ExchangeCard />
+            <ExchangeCard wide/>
             <div className="container mx-auto my-10">
                 <h1 className="text-4xl font-bold pt-5 text-center my-5">
                     <span className="border-blue-500">Get <span className="text-blue-500">Started</span> </span>

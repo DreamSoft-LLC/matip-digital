@@ -8,6 +8,7 @@ import Earnings from "./pages/earnings";
 import Landing from "./pages/landing";
 import Login from "./pages/login";
 import Payment from "./pages/payment";
+import Register from "./pages/register";
 import Signup from "./pages/signup";
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact  path="/" component={Landing} />
         <PublicRoute restricted  path="/login" component={Login} />
         <PublicRoute restricted path="/signup" component={Signup} />
+        <PublicRoute restricted path="/register" component={Register} />
         <Route path="/about-us" component={Aboutus} />
         <Route path="/contact" component={Contactus} />
         <PrivateRoute path="/dashboard" component={Dashboard} />

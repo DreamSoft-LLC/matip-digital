@@ -6,13 +6,13 @@ import Navbar from '../components/navbar'
 
 const cover = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80";
 
-export default function Aboutus({history}) {
+export default function Aboutus({ history }) {
     return (
-        <div className="w-screen min-h-screen flex flex-col">
-            <Navbar history={history} />
-            <div className="flex-1 container mx-auto">
-                <div className="bg-blue-500 flex items-center justify-center" style={{ height: "30vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
-                    <div>
+        <div className="min-h-screen flex flex-col">
+            <div className="flex-1 ">
+                <div className="bg-blue-500 flex flex-col " style={{ minHeight: "60vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
+                    <Navbar history={history} />
+                    <div className="flex-1 flex flex-col items-center justify-center">
                         <h1 className="text-4xl font-bold pt-5 text-center my-5">
                             <span className="border-blue-500 uppercase text-white">About <span className="text-blue-500">Us</span> </span>
                         </h1>
@@ -21,7 +21,7 @@ export default function Aboutus({history}) {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="px-10">
                     <h1 className="text-4xl font-bold pt-5 text-center my-5">
                         <span className="border-blue-500 uppercase">WHAT WE <span className="text-blue-500">DO</span> </span>
                     </h1>
@@ -42,9 +42,9 @@ export default function Aboutus({history}) {
                         </p>
                     </div>
                 </div>
-                <div className="my-10">
+                <div className="my-10 px-10">
                     <h1 className="text-4xl font-bold pt-5 text-center my-5">
-                        <span className="border-blue-500 uppercase">WHAT CHOOSE <span className="text-blue-500">US</span> </span>
+                        <span className="border-blue-500 uppercase">WHY CHOOSE <span className="text-blue-500">US</span> </span>
                     </h1>
                     <div>
                         <p>
@@ -64,8 +64,8 @@ export default function Aboutus({history}) {
                     </div>
                 </div>
             </div>
-            <ExchangeCard wide />
-            <Footer/>
+            <ExchangeCard wide/>
+            <Footer />
         </div>
     )
 }

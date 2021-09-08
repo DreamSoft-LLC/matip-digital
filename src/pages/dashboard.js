@@ -16,7 +16,7 @@ export default function Dashboard({ history }) {
 
     const { setIsAuth } = AuthConsumer()
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [dashData, setDashData] = useState({})
 
@@ -39,7 +39,7 @@ export default function Dashboard({ history }) {
     useEffect(() => {
         if (dashData.account) {
             if (!dashData.account.plan) {
-               history.push('/payment')
+                history.push('/payment')
             }
         }
     }, [dashData])
@@ -54,12 +54,12 @@ export default function Dashboard({ history }) {
                 </svg>
 
             </div> :
-                <div className="min-h-screen flex flex-1 flex-col w-screen">
+                <div className="min-h-screen flex flex-1 flex-col">
 
-                    <Navbar isLoggedin />
 
-                    <div className="bg-blue-500 container mx-auto flex items-center justify-center" style={{ height: "30vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
-                        <div>
+                    <div className="bg-blue-500 flex flex-col" style={{ height: "70vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
+                        <Navbar isLoggedin />
+                        <div className="flex-1 flex flex-col items-center justify-center">
                             <div className="text-center font-semibold text-white">
                                 <p className="font-semibold text-xl">Welcome Back</p>
                             </div>
@@ -147,63 +147,54 @@ function DashboardComp() {
 
                 </div>
                 <button className="bg-blue-500  text-white font-semibold px-3 py-1 rounded-md">Upgrade</button>
+                <button className="bg-green-500  text-white font-semibold px-3 py-1 rounded-md">Withdraw</button>
             </div>
-            <div className="my-5">
-                <div className="flex items-center justify-between px-3 md:px-0 text-center md:text-left">
-                    <div>
-                        <h1 className="text-2xl font-semibold text-gray-700">Earnings Score</h1>
-                        <p>An overview of the performance of your bot in realtime</p>
-                    </div>
-                    <button className="hidden md:flex bg-yellow-500 rounded-md w-40 py-3 font-semibold text-white">
-                        Withdraw
-                    </button>
-                </div>
+            <div className="mb-16">
+
+
                 <div initial={{ x: 100 }}
                     animate={{ x: 0 }}
-                    transition={{ ease: "easeOut", duration: 2 }} className="my-5">
+                    transition={{ ease: "easeOut", duration: 2 }} className="">
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-0">
-                        <div className="flex-1 border p-5 bg-white shadow flex items-center justify-between">
+                    <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                            <div className="flex ">
-                                <div className="border rounded-full p-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                                    </svg>
+                        <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                            <div class="flex items-start justify-between">
+                                <div class="flex flex-col space-y-2">
+                                    <span class="text-gray-400">active bot</span>
+                                    <span class="text-lg font-semibold">100,221</span>
                                 </div>
+                                <div class="p-10 bg-gray-200 rounded-md"></div>
                             </div>
                             <div>
-                                <h1 className="text-2xl font-semibold">Active BOT</h1>
-                                <h5 className="font-bold text-blue-500 uppercase pb-2">$ 2000.00<span className="text-sm font-bold text-gray-400"> / LIFETIME</span></h5>
-                            </div>
-
-                        </div>
-
-                        <div className="flex-1 border p-5 bg-white shadow flex items-center justify-between">
-                            <div className="flex ">
-                                <div className="border rounded-full p-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7.858 5.485a1 1 0 00-1.715 1.03L7.633 9H7a1 1 0 100 2h1.834l.166.277V12H7a1 1 0 100 2h2v1a1 1 0 102 0v-1h2a1 1 0 100-2h-2v-.723l.166-.277H13a1 1 0 100-2h-.634l1.492-2.486a1 1 0 10-1.716-1.029L10.034 9h-.068L7.858 5.485z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <h1 className="text-2xl font-semibold">Account Balance</h1>
-                                <p className="text-gray-900 font-bold pb-2 text-right">$2000.00</p>
+                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">14%</span>
+                                <span>from 2019</span>
                             </div>
                         </div>
-
-                        <div className="flex-1 border p-5 bg-white shadow flex items-center justify-between">
-                            <div className="flex ">
-                                <div className="border rounded-full p-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                                    </svg>
+                        <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                            <div class="flex items-start justify-between">
+                                <div class="flex flex-col space-y-2">
+                                    <span class="text-gray-400">account balance</span>
+                                    <span class="text-lg font-semibold">100,221</span>
                                 </div>
+                                <div class="p-10 bg-gray-200 rounded-md"></div>
                             </div>
                             <div>
-                                <h1 className="text-2xl font-semibold">Total Withdrawal</h1>
-                                <p className="text-red-500 font-bold pb-2 text-right">$2000.00</p>
+                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">14%</span>
+                                <span>from 2019</span>
+                            </div>
+                        </div>
+                        <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                            <div class="flex items-start justify-between">
+                                <div class="flex flex-col space-y-2">
+                                    <span class="text-gray-400">Total withdrawals</span>
+                                    <span class="text-lg font-semibold">100,221</span>
+                                </div>
+                                <div class="p-10 bg-gray-200 rounded-md"></div>
+                            </div>
+                            <div>
+                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">14%</span>
+                                <span>from 2019</span>
                             </div>
                         </div>
 

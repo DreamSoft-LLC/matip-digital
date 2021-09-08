@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
-import ExchangeCard from '../components/exchangecard'
-import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import { motion } from "framer-motion"
 import { API_SERVER } from '../config'
 import axios from 'axios'
 import { AuthConsumer } from '../contexts/auth'
+import Register from './register'
 
 export default function Signup({ history }) {
     const [step, setStep] = useState(0)
     return (
-        <div className="w-screen flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-600 to-blue-500">
             <Navbar history={history} />
 
-            <div className="flex-1 py-10">
+            <div className="flex-1">
 
-                {step === 0 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="flex-1 flex items-center mx-auto justify-center px-3 md:w-1/3">
-                    <PersonalForm step={step} setStep={setStep} />
+                {step === 0 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="flex-1">
+                    <Register step={step} setStep={setStep} />
                 </motion.div>}
                 {step === 1 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="container mx-auto">
                     <div className="flex items-center justify-center space-x-3">
@@ -34,8 +33,6 @@ export default function Signup({ history }) {
                 </motion.div>}
             </div>
 
-            <ExchangeCard wide />
-            <Footer />
         </div>
     )
 }
