@@ -34,17 +34,17 @@ export default function Referal() {
         <div className="flex-1">
 
             <div className="container mx-auto">
-                <div className="flex items-center  mx-7">
-                    <div className="bg-white mt-3  w-1/3 ">
+                <div className="flex flex-col md:flex-row items-center  mx-7">
+                    <div className="bg-white mt-3  md:w-1/3 ">
                         <div className="p-3">
                             <h1 className="text-4xl my-1 text-gray-700 font-semibold"> <span>3%</span> Referal Bonus</h1>
                             <p className="mb-3 text-sm text-gray-600 font-semibold">Help a friend to register buy copying and sending them the link below to recieve 3% bonus on the bot they purchase.</p>
                         </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="hidden md:flex flex-1">
 
                     </div>
-                    <div onClick={e=>copyclip(`${URL}signup?ref=${userData.members._id}`)} className="flex items-center justify-center border p-3  mx-7 w-1/3 cursor-pointer hover:bg-white hover:shadow rounded ">
+                    <div onClick={e=>copyclip(`${URL}signup?ref=${userData.members._id}`)} className="flex items-center justify-center border p-3  mx-7 md:w-1/3 cursor-pointer hover:bg-white hover:shadow rounded ">
                         <p className="font-semibold flex-1 text-gray-400 hover:text-black">{`${URL}signup?ref=${userData.members._id}`}</p>
                         <button className="text-gray-500 hover:text-green-600" onClick={e=>copyclip(`${URL}signup?ref=${userData.members._id}`)}>
                             <ClipboardIcon className="h-5 w-5" />
