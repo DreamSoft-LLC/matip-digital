@@ -17,14 +17,14 @@ export default function Navbar({ history, transparent_null }) {
     const { path } = useRouteMatch()
     const [email, setEmail] = useState('')
 
-    const { isAuth,setIsAuth } = AuthConsumer()
+    const { isAuth, setIsAuth,isAuthToggle, setIsAuthToggle } = AuthConsumer()
+
 
     useEffect(() => {
         setEmail(localStorage.getItem('name'))
         setToggle(false)
     }, [])
 
-    const [isAuthToggle, setIsAuthToggle] = useState(false)
     const logout = () => {
         setIsAuth(false);
         localStorage.clear()
@@ -67,6 +67,7 @@ export default function Navbar({ history, transparent_null }) {
                                 <Link to="/dashboard/account">
                                     Account
                                 </Link>
+                                <button className="flex-1 px-3 py-2 text-center text-green-500 bg-green-50 rounded-md">Withdraw</button>
                                 <button onClick={e => logout()} className="flex-1 px-3 py-2 text-center text-blue-500 bg-blue-50 rounded-md">Logout</button>
                             </motion.div>
                         </>}
@@ -87,11 +88,32 @@ export default function Navbar({ history, transparent_null }) {
                     <Link to="/about-us">About us</Link>
                     <Link to="/pricing">Pricing</Link>
                     <Link to="/contact">Contact us</Link>
-                    <div className="w-full flex items-center space-x-2">
+                    {isAuth ? <>
+                    <div className="border"></div>
+
+                        <Link to="/dashboard">
+                            Dashboard
+                        </Link>
+                        <Link to="/dashboard/earnings">
+                            Earnings
+                        </Link>
+                        <Link to="/dashboard/referals">
+                            Referals
+                        </Link>
+                        <Link to="/dashboard/account">
+                            Account
+                        </Link>
+                        <div className="w-full flex items-center space-x-2">
+
+                        <button className="flex-1 px-3 py-2 text-center text-green-50 bg-green-500 rounded-md">Withdraw</button>
+                        <button onClick={e => logout()} className="flex-1 px-3 py-2 text-center text-blue-500 bg-blue-50 rounded-md">Logout</button>
+                        </div>
+                    </> : <><div className="w-full flex items-center space-x-2">
                         <Link to="/login" className="flex-1 px-3 py-2 text-center text-blue-500 bg-blue-50 rounded-md">Login</Link>
                         <Link to="/signup" className="flex-1 px-3 py-2 text-center bg-blue-500 text-blue-50 rounded-md">Sign up</Link>
 
-                    </div>
+                    </div></>}
+                    
                 </div>
                 <div className="relative h-full p-2">
                     <XIcon className="w-10 h-10 text-white" onClick={e => setToggle(!toggle)} />

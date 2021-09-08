@@ -47,8 +47,12 @@ export const PLANS = [
 export default function Payment({ history }) {
     const [selected, setSelected] = useState();
     const [loading, setLoading] = useState(false)
-
+    const {isAuth} = AuthConsumer()
     function purchase(plan,index) {
+        if (!isAuth ){
+            history.push('/signup');
+            return;
+        }
         setSelected(index)
         setLoading(true)
         const session_key = localStorage.getItem('session-token')
@@ -57,7 +61,7 @@ export default function Payment({ history }) {
         }).then(res => { setLoading(true); window.location.href = res.data.charge.hosted_url }).catch(err => { console.log(err); setLoading(true) })
     }
     return (
-        <div className=" flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen">
             <Animate />
             <div className=" bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col" style={{ height: '60vh' }}>
                 <Navbar transparent_null history={history} />
