@@ -92,7 +92,7 @@ export default function Login({ history }) {
                                 </div>
                                 <p class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
                                     <span>Are you New here?</span>
-                                    <Link to="/register"
+                                    <Link to="/signup"
                                         class="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300">Sign
                                         up</Link>
                                 </p>
