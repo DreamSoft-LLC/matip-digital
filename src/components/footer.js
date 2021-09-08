@@ -6,7 +6,7 @@ export default function Footer() {
         <>
             <div className=" bg-gradient-to-r from-indigo-600 to-blue-600">
                 {/* footer */}
-                <div className="container flex flex-col md:flex-row items-center mx-auto justify-between text-white py-10">
+                <div className="container flex flex-col md:flex-row items-center mx-auto justify-between text-white py-10 md:px-10">
                     <div className="mb-10 md:mb-0">
                         <div className="flex  items-center">
                             {/* logo */}
@@ -41,7 +41,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-blue-800">
+                <div className="bg-blue-800  md:px-10">
                     <div className="container mx-auto text-white flex p-3 items-center justify-between">
                         <div className="text-center">Copyrights © 2020 Company Name. All Rights Reserved</div>
                         <div className="md:flex items-center space-x-3 font-semibold hidden">

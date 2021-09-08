@@ -1,9 +1,79 @@
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import bg2 from '../assets/images/bg3.jpg'
 import Animate from '../components/animate/animate'
 import Navbar from '../components/navbar'
+import { API_SERVER } from '../config'
+import { AuthConsumer } from '../contexts/auth'
+const securityQuestion = [
+    {
+        id: 0,
+        quest: "Select a question from the following options."
+    },
+    {
+        id: 1,
+        quest: "Who's your daddy?"
+    },
+    {
+        id: 2,
+        quest: "What is your favorite color?"
+    },
+    {
+        id: 3,
+        quest: "What is your mother's favorite aunt's favorite color?"
+    },
+    {
+        id: 4,
+        quest: "What is the first name of the person you first kissed?"
+    },
+    {
+        id: 5,
+        quest: "What is the last name of the teacher who gave you your first failing grade?"
+    },
+    {
+        id: 6,
+        quest: "What brand of food did your first pet eat?"
+    }
+]
 
-function Register() {
+function Register({ step, setStep }) {
+    const { setIsAuth } = AuthConsumer()
+    const signup = (e) => {
+        if (e.target[1].value === "" || e.target[2].value === "" || e.target[3].value === "" || e.target[4].value === "" || e.target[6].value === "") return;
+        if (e.target[3].value !== e.target[4].value) return;
+        if (e.target[5].value == 0) return;
+        // create account
+        axios.post(API_SERVER + '/auth/register', {
+            name: e.target[1].value,
+            email: e.target[2].value,
+            password: e.target[3].value,
+            securityQuestion: securityQuestion[e.target[5].value].quest,
+            securityAnswer: e.target[6].value
+        }).then((res) => {
+            // account created successfully
+            console.log(res.data)
+            if (res.status == 200) {
+                // login to account
+                axios.post(API_SERVER + '/auth/login', {
+                    email: e.target[2].value,
+                    password: e.target[3].value,
+                }).then(
+                    res => {
+                        console.log(res.data)
+                        // set login to true 
+                        localStorage.setItem('session-token', res.data.token);
+                        setIsAuth(true);
+                        // select plan
+                        setStep(prev => prev + 1)
+                    }
+                ).catch(err => console.log(err.message))
+
+            }
+
+        }).catch(err => console.log(err, "err"))
+
+
+    }
     return (
         <div>
 
@@ -35,7 +105,7 @@ function Register() {
                             </div>
 
 
-                            <form class="mt-8 space-y-6" action="#" method="POST">
+                            <form onSubmit={e => { e.preventDefault(); signup(e) }} class="mt-8 space-y-6" action="#" method="POST">
                                 <input type="hidden" name="remember" value="true" />
                                 <div class="relative">
                                     <div class="absolute right-3 mt-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500"
@@ -77,6 +147,18 @@ function Register() {
                                     <input
                                         class="w-full content-center text-base px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                         type="password" placeholder="Confirm password" />
+                                </div>
+
+                                <div>
+                                    <label className="font-semibold">Security Question</label>
+                                    <select className="w-full border-b p-3" name="security1">
+                                        {securityQuestion.map((data, index) => <option value={data.id}>{data.quest}</option>)}
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="font-semibold">Security Question Answer</label>
+                                    <input className="w-full border-b p-3" type="text" placeholder="Answer" />
                                 </div>
 
                                 <div>

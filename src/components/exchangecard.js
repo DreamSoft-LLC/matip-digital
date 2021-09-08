@@ -8,7 +8,8 @@ export default function ExchangeCard({wide}) {
 
     function GetPrices() {
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY_CRYPTO}&ids=BTC,ETH,XRP,XMR&interval=1h,1d&convert=USD&per-page=100&page=1`)
+        axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY_CRYPTO}&ids=BTC,ETH,XRP,XMR&interval=1h,1d&convert=USD&per-page=100&page=1`,
+        { crossdomain: true })
         .then(res=>setCurrencies(res.data))
         .catch(err=>console.log(err))
     }
@@ -16,6 +17,11 @@ export default function ExchangeCard({wide}) {
     useEffect(() => {
         GetPrices();
     }, [])
+    
+    let formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
 
     return (
         <div className={`flex py-5 flex-wrap bg-white border justify-between ${wide === true ? '' : 'container mx-auto'} px-10 shadow mt-0 space-y-3`}>
@@ -26,7 +32,7 @@ export default function ExchangeCard({wide}) {
                     </div>
                     <div>
                         <h5 className="font-semibold">{data.name}</h5>
-                        <h5 className="font-extrabold text-blue-700">${Math.round(data.price*100)/100}</h5>
+                        <h5 className="text-sm text-blue-700">{formatter.format(Math.round(data.price*100)/100)}</h5>
                     </div>
                 </div>
             ))}

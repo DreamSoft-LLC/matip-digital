@@ -18,9 +18,10 @@ function App() {
         <PublicRoute restricted path="/signup" component={Signup} />
         <PublicRoute restricted path="/register" component={Register} />
         <Route path="/about-us" component={Aboutus} />
+        <Route path="/pricing" component={Payment} />
         <Route path="/contact" component={Contactus} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <Route path="/payment" component={Payment} />
+        <PrivateRoute path="/payment" component={Payment} />
     </BrowserRouter>
   );
 }

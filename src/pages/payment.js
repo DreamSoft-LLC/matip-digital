@@ -11,44 +11,54 @@ import Animate from '../components/animate/animate'
 
 
 
-const PLANS = [
+export const PLANS = [
     {
-        Algo: "SHA-256",
-        discription: "",
-        price: "100.00",
-        pct: '5%'
+        name: 'Easy',
+        discretion: 'All the basics for businesses that are just getting started.',
+        price: {
+            lifetime: 100,
+            monthly: 29,
+            annually: 29 * 12 - 199,
+        },
+        features: ['One project', 'Your dashboard'],
     },
     {
-        Algo: "Scrypt",
-        discription: "",
-        price: "200.00",
-        pct: '10%'
+        name: 'Basic',
+        discretion: 'Better for growing businesses that want more customers.',
+        price: {
+            lifetime: 200,
+            monthly: 59,
+            annually: 59 * 12 - 100,
+        },
+        features: ['Two projects', 'Your dashboard', 'Components included', 'Advanced charts'],
     },
     {
-        Algo: "ECDSA",
-        price: "500.00",
-        discription: "",
-        pct: '15%'
+        name: 'Custom',
+        discretion: 'Advanced features for pros who need more customization.',
+        price: {
+            lifetime: 500,
+            monthly: 139,
+            annually: 139 * 12 - 100,
+        },
+        features: ['Unlimited projects', 'Your dashboard', '+300 Components', 'Chat support'],
     },
-    {
-        Algo: "X11",
-        price: "1000.00",
-        discription: "",
-        pct: '20%'
-    }
 ]
 
 export default function Payment({ history }) {
     const [selected, setSelected] = useState();
-    function purchase() {
+    const [loading, setLoading] = useState(false)
+
+    function purchase(plan,index) {
+        setSelected(index)
+        setLoading(true)
         const session_key = localStorage.getItem('session-token')
-        axios.post(API_SERVER + '/payment', { ...PLANS[selected] }, {
+        axios.post(API_SERVER + '/payment', { ...plan }, {
             headers: { 'auth-token': session_key }
-        }).then(res => window.location.href = res.data.charge.hosted_url).catch(err => console.log(err))
+        }).then(res => { setLoading(true); window.location.href = res.data.charge.hosted_url }).catch(err => { console.log(err); setLoading(true) })
     }
     return (
         <div className=" flex flex-col min-h-screen">
-            <Animate/>
+            <Animate />
             <div className=" bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col" style={{ height: '60vh' }}>
                 <Navbar transparent_null history={history} />
                 <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between mx-10 ">
@@ -60,7 +70,7 @@ export default function Payment({ history }) {
                         <label className="font-semibold">Currency</label>
                         <div className="flex-1 w-56 rounded-md flex justify-between items-center text-white bg-blue-700 px-5 py-2">
                             <span>United State (USD)</span>
-                            <ChevronDownIcon className="w-5 h-5 text-white"/>
+                            <ChevronDownIcon className="w-5 h-5 text-white" />
                         </div>
                     </div>
                 </div>
@@ -69,11 +79,9 @@ export default function Payment({ history }) {
 
             <div className="flex-1 py-10">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="container mx-auto">
-                    
-                    <SelectPlan selected={selected} setSelected={setSelected} />
-                    <div className="flex items-center justify-center my-5">
-                        <button className="bg-blue-500 rounded-md w-40 py-3 font-semibold text-white" onClick={e => purchase()}>Purchase</button>
-                    </div>
+
+                    <SelectPlan loading={loading} selected={selected} setSelected={purchase} />
+
                 </motion.div>
             </div>
 
@@ -87,30 +95,74 @@ export default function Payment({ history }) {
 
 
 
-function SelectPlan({ selected, setSelected }) {
+function SelectPlan({ setSelected, loading ,selected}) {
+
+
 
     return (
         <div className="mx-5">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {PLANS.map((data, index) => (
-                    <motion.div
-                        initial={{ x: 100 }}
-                        animate={{ x: 0 }}
-                        transition={{ ease: "easeOut", duration: 2 }} key={index.toString()} onClick={e => setSelected(index)} className="h-56 flex-1 flex flex-col p-3 border bg-white shadow rounded-lg hover:shadow-lg cursor-pointer hover:border-blue-400">
-                        <h3 className="text-3xl font-semibold text-gray-900 uppercase">${data.price}<span className="text-sm font-bold text-gray-400"> / year</span> </h3>
-                        <h5 className="font-bold text-blue-500 uppercase pb-2">{data.Algo} - <span className="text-green-500">{data.pct}</span> </h5>
-                        <hr />
-                        <p className="pt-2">
-                            Please feel free to contact us at any time using form below. We intended to help you with a collection of the most common.
-                        </p>
-                        {selected === index && <div className="flex-1 w-full bg-white rounded-lg flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
+                {
+                    PLANS.map((data, index) => {
+                        return <>
+                            <section class="flex flex-col w-full max-w-sm p-12 space-y-6 bg-white rounded-lg shadow-md border">
 
-                            <p className="font-semibold text-blue-500">Selected</p>
-                        </div>}
-                    </motion.div>
-                ))}
+                                <div class="flex-shrink-0">
+                                    <span
+                                        class="text-4xl font-medium tracking-tight "
+                                    >${data.price.lifetime}</span>
+                                    <span class="text-gray-400"> /Lifetime</span>
+                                </div>
+
+
+                                <div class="flex-shrink-0 pb-6 space-y-2 border-b">
+                                    <h2 class="text-2xl font-normal">{data.name}</h2>
+                                    <p class="text-sm text-gray-400">{data.discretion}</p>
+                                </div>
+
+                                <ul class="flex-1 space-y-4">
+                                    {data.features.map((features, index) =>
+
+                                        <li class="flex items-start">
+                                            <svg
+                                                class="w-6 h-6 text-green-300"
+                                                aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+                                            <span class="ml-3 text-base font-medium" >{features}</span>
+                                        </li>
+
+                                    )}
+                                </ul>
+
+
+                                <div class="flex-shrink-0 pt-4">
+                                    <button
+                                        onClick={e => setSelected(data,index)}
+                                        class="inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        {(loading && selected == index) ? <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>: ""}
+                                        <span>Start with {data.name}</span>
+                                    </button>
+                                </div>
+                            </section>
+                        </>
+                    })
+                }
+
             </div>
-        </div>
+        </div >
     )
 }
 
