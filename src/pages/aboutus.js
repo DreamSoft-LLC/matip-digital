@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Animate from '../components/animate/animate';
 import ExchangeCard from '../components/exchangecard';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar'
@@ -64,7 +65,54 @@ export default function Aboutus({ history }) {
                     </div>
                 </div>
             </div>
-            <ExchangeCard wide/>
+
+            <>
+                <div class="relative bg-gradient-to-r from-purple-800 to-blue-500 p-5 lg:p-20">
+                    <Animate/>
+                    <div class='md:flex'>
+                        <div class="hidden md:w-1/2 md:flex">
+
+                        </div>
+                        <div class="w-full md:w-6/12 relative">
+                            <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-md">
+                                <div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40  w-40 ">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&w=128&h=128&q=60&facepad=2" alt="" class="h-full w-full" />
+                                </div>
+
+                                <h2 class="mt-4 font-bold text-xl">Sebastian Bennett</h2>
+                                <h6 class="mt-2 text-sm font-medium">Founder</h6>
+
+                                <p class="text-xs text-gray-500 text-center mt-3 px-8">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.Ab enim molestiae nulla.Ab enim molestiae nulla.
+                                </p>
+                                <div class="mt-6 pt-3 flex flex-wrap mx-5 border-t items-center">
+                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
+                                        Sebastianbb12@mail.com
+                                    </div>
+                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
+                                        +1-555-1545-452
+                                    </div>
+                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
+                                        @Sebasti12
+                                    </div>
+                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
+                                        +1-555-1545-452
+                                    </div>
+                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
+                                        +1-555-1545-452
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </>
+
+            <ExchangeCard wide />
             <Footer />
         </div>
     )
