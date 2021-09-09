@@ -14,9 +14,9 @@ export default function Landing({ history }) {
                <Navbar/>
                 <div className="flex justify-start items-center flex-1 px-3 md:pl-20">
                     <div className="space-y-5 w-full md:w-1/2">
-                        <h2 className="font-bold md:text-xl text-white capitalize">The trusted investment partner.</h2>
+                        <h2 className="font-bold md:text-xl text-white capitalize">Your trusted partner.</h2>
                         <div className="capitalize text-2xl md:text-6xl font-bold text-white space-y-4">
-                            <h3 className="capitalize">Better Returns on investment funds</h3>
+                            <h3 className="capitalize">Better Returns from your bots</h3>
                             
                         </div>
                         <div className="flex items-center space-x-5">
@@ -37,8 +37,8 @@ export default function Landing({ history }) {
                     <span className="border-blue-500">Get <span className="text-blue-500">Started</span> </span>
                 </h1>
                 <p className="text-center px-3">
-                    We offer investment solutions through customized portfolios, co-investments, direct investments and established funds across alternative strategies including diversified, strategy focused and opportunistic. We have distinct teams that are responsible for investment research, operational due diligence and risk management.
-                    As one of the world's largest alternative investment managers, Horizonline has the talent, scale and resources to bring clients the creative and meaningful solutions they require to achieve their investment goals.
+                    We offer mining solutions through customized bots and establish and established funds across alternative strategies including diversified, strategy focused and opportunistic. We have distinct teams that are responsible for investment research, operational due diligence and risk management.
+                    As one of the world's largest alternative investment managers, Matip Bot has the talent, scale and resources to bring clients the creative and meaningful solutions they require to achieve their investment goals.
                 </p>
                 <motion.div initial={{ x: 100 }}
                     animate={{ x: 0 }}
@@ -65,7 +65,7 @@ export default function Landing({ history }) {
                                 </div>
                             </div>
                             <h1 className="text-2xl font-semibold">Purchase Bot</h1>
-                            <p>After registration, Select your prefred bot package to work on your behalf. Our payment modes are set to accept crypto currencies. make sure you send the right right funds to the right wallet.</p>
+                            <p>After registration, Select your prefred bot package to work on your behalf. Our payment modes are set to accept crypto currencies. make sure you send the right  funds to the right wallet.</p>
                         </div>
 
                         <div className="flex-1 border p-5 bg-white shadow text-center">
@@ -77,7 +77,7 @@ export default function Landing({ history }) {
                                 </div>
                             </div>
                             <h1 className="text-2xl font-semibold">Make Profit</h1>
-                            <p>The accrued interest from your deposit will be automatically transferred to your account balance according to our provided plan. Interest is accured daily and would reflect on your account daily</p>
+                            <p>The accrued interest from your deposit will be automatically transferred to your account balance according to our provided plan. The accured earnings from your bots would reflect on your account daily</p>
                         </div>
 
                     </div>

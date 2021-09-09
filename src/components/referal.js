@@ -1,6 +1,15 @@
-import React from 'react'
+import { ClipboardCopyIcon, ClipboardIcon, CurrencyDollarIcon, UserGroupIcon } from '@heroicons/react/solid'
+import React, { useEffect } from 'react'
+import { AuthConsumer } from '../contexts/auth'
+
+const URL = `https://arcane-inlet-45366.herokuapp.com/`;
 
 export default function Referal() {
+    const { setIsAuth, userData, setIsAuthToggle } = AuthConsumer()
+
+    useEffect(() => {
+        setIsAuthToggle(false)
+    }, [])
     const people = [
         {
             name: 'Jane Cooper',
@@ -13,48 +22,78 @@ export default function Referal() {
         },
         // More people...
     ]
+
+    const copyclip = (text) => {
+        navigator.clipboard.writeText(text).then(function () {
+            
+        }, function (err) {
+           
+        });
+    }
     return (
         <div className="flex-1">
+
             <div className="container mx-auto">
-            <div initial={{ x: 100 }}
+                <div className="flex flex-col md:flex-row items-center  mx-7">
+                    <div className="bg-white mt-3  md:w-1/3 ">
+                        <div className="p-3">
+                            <h1 className="text-4xl my-1 text-gray-700 font-semibold"> <span>3%</span> Referal Bonus</h1>
+                            <p className="mb-3 text-sm text-gray-600 font-semibold">Help a friend to register buy copying and sending them the link below to recieve 3% bonus on the bot they purchase.</p>
+                        </div>
+                    </div>
+                    <div className="hidden md:flex flex-1">
+
+                    </div>
+                    <div onClick={e=>copyclip(`${URL}signup?ref=${userData.members._id}`)} className="flex items-center justify-center border p-3  mx-7 md:w-1/3 cursor-pointer hover:bg-white hover:shadow rounded ">
+                        <p className="font-semibold flex-1 text-gray-400 hover:text-black">{`${URL}signup?ref=${userData.members._id}`}</p>
+                        <button className="text-gray-500 hover:text-green-600" onClick={e=>copyclip(`${URL}signup?ref=${userData.members._id}`)}>
+                            <ClipboardIcon className="h-5 w-5" />
+                        </button>
+                    </div>
+                </div>
+
+                <div initial={{ x: 100 }}
                     animate={{ x: 0 }}
                     transition={{ ease: "easeOut", duration: 2 }} className="">
 
-                    <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-2">
+                    <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-2 px-7">
 
                         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
                             <div class="flex items-start justify-between">
                                 <div class="flex flex-col space-y-2">
-                                    <span class="text-gray-400">referal bonus</span>
+                                    <span class="text-gray-400 uppercase">referal bonus</span>
                                     <span class="text-lg font-semibold">100,221</span>
                                 </div>
-                                <div class="p-10 bg-gray-200 rounded-md"></div>
+                                <div class="p-5 bg-gray-200 rounded-md">
+                                    <UserGroupIcon className="w-10 h-10 text-gray-300" />
+                                </div>
                             </div>
                             <div>
-                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">14%</span>
-                                <span>from 2019</span>
+
                             </div>
                         </div>
                         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
                             <div class="flex items-start justify-between">
                                 <div class="flex flex-col space-y-2">
-                                    <span class="text-gray-400">refered users</span>
+                                    <span class="text-gray-400 uppercase">refered users</span>
                                     <span class="text-lg font-semibold">100,221</span>
                                 </div>
-                                <div class="p-10 bg-gray-200 rounded-md"></div>
+                                <div class="p-5 bg-gray-200 rounded-md">
+                                    <CurrencyDollarIcon className="w-10 h-10 text-gray-300" />
+                                </div>
                             </div>
                             <div>
-                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">14%</span>
-                                <span>from 2019</span>
+                                <span class="inline-block px-2 text-sm text-white bg-green-300 rounded"></span>
+
                             </div>
                         </div>
-                       
+
                     </div>
 
                 </div>
                 <h1 className="text-center  text-2xl font-semibold text-gray-700 mt-16">Downlines </h1>
                 <p className="text-center">A list view of all your downlines</p>
-                <div className="flex-1 my-5">
+                <div className="flex-1 my-5 px-7">
                     <div className="flex flex-col">
                         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

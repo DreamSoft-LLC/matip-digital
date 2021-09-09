@@ -13,6 +13,7 @@ import Animate from '../components/animate/animate'
 
 export const PLANS = [
     {
+        id:1,
         name: 'Easy',
         discretion: 'All the basics for businesses that are just getting started.',
         price: {
@@ -23,6 +24,7 @@ export const PLANS = [
         features: ['One project', 'Your dashboard'],
     },
     {
+        id:2,
         name: 'Basic',
         discretion: 'Better for growing businesses that want more customers.',
         price: {
@@ -33,6 +35,7 @@ export const PLANS = [
         features: ['Two projects', 'Your dashboard', 'Components included', 'Advanced charts'],
     },
     {
+        id:3,
         name: 'Custom',
         discretion: 'Advanced features for pros who need more customization.',
         price: {
@@ -47,17 +50,21 @@ export const PLANS = [
 export default function Payment({ history }) {
     const [selected, setSelected] = useState();
     const [loading, setLoading] = useState(false)
-
-    function purchase(plan,index) {
+    const { isAuth } = AuthConsumer()
+    function purchase(plan, index) {
+        if (!isAuth) {
+            history.push('/signup');
+            return;
+        }
         setSelected(index)
         setLoading(true)
         const session_key = localStorage.getItem('session-token')
-        axios.post(API_SERVER + '/payment', { ...plan }, {
+        axios.post(API_SERVER + '/payment', { ...plan}, {
             headers: { 'auth-token': session_key }
         }).then(res => { setLoading(true); window.location.href = res.data.charge.hosted_url }).catch(err => { console.log(err); setLoading(true) })
     }
     return (
-        <div className=" flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen">
             <Animate />
             <div className=" bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col" style={{ height: '60vh' }}>
                 <Navbar transparent_null history={history} />
@@ -95,7 +102,7 @@ export default function Payment({ history }) {
 
 
 
-function SelectPlan({ setSelected, loading ,selected}) {
+function SelectPlan({ setSelected, loading, selected }) {
 
 
 
@@ -146,13 +153,13 @@ function SelectPlan({ setSelected, loading ,selected}) {
 
                                 <div class="flex-shrink-0 pt-4">
                                     <button
-                                        onClick={e => setSelected(data,index)}
+                                        onClick={e => setSelected(data, index)}
                                         class="inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
                                         {(loading && selected == index) ? <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                        </svg>: ""}
+                                        </svg> : ""}
                                         <span>Start with {data.name}</span>
                                     </button>
                                 </div>

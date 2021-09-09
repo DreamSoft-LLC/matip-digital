@@ -7,8 +7,10 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
 
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(false);
 
+    const [userData, setUserData] = useState()
+    const [isAuthToggle, setIsAuthToggle] = useState(false)
     // check localstorage for session
     const checkAuth = () => {
         const session_key = localStorage.getItem('session-token')
@@ -29,29 +31,13 @@ export function AuthProvider({ children }) {
         })
     }
 
-    // login
-    const login = (email, password) => {
-
-    }
-
-
-    // signup
-    const signup = (fname, lname, email, phone, password) => {
-
-    }
-
-    // logout
-    function logout() {
-        setIsAuth(false);
-        localStorage.clear()
-    }
 
     useEffect(() => {
         checkAuth();
     }, [])
 
     return (
-        <AuthContext.Provider value={{ isAuth, logout, login, setIsAuth }}>
+        <AuthContext.Provider value={{ isAuth,  setIsAuth,userData, setUserData ,isAuthToggle, setIsAuthToggle}}>
             {children}
         </AuthContext.Provider>
     )
