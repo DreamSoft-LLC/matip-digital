@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom'
 
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon, MenuAlt3Icon, UserIcon, XIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, CloudIcon, CubeIcon, MenuAlt3Icon, UserIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { AuthConsumer } from '../contexts/auth'
 
@@ -35,10 +35,9 @@ export default function Navbar({ history, transparent_null }) {
             <div className={`flex items-center justify-between  ${transparent_null ? "border-b border-blue-500 mx-10" : "bg-black bg-opacity-20  px-10"} text-white font-semibold space-x-5 py-5 md:py-9`} style={{ zIndex: 700 }}>
                 <Link to="/" className="flex items-center justify-center space-x-2">
                     {/*logo  */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h1 className="text-2xl font-bold text-white">LOGO</h1>
+                    <CubeIcon className="h-10 w-10"/>
+                   
+                    <h1 className="text-2xl font-bold text-white uppercase">matip digital</h1>
                 </Link>
                 <div className="hidden md:flex items-center space-x-5">
                     <Link to="/">Homepage</Link>
