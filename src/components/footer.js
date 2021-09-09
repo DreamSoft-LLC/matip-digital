@@ -27,9 +27,9 @@ export default function Footer() {
                                 </svg>
                             </span>
                             <div className="font-semibold text-sm">
-                                <div>Level 1, 100 Moorhouse </div>
-                                <div>Avenue, Christchurch, 8011 , </div>
-                                <div>New Zealand.</div>
+                                <div> 1625 N Shoreline Blvd, </div>
+                                <div> Mountain View, CA 94043, </div>
+                                <div>USA.</div>
                             </div>
                         </div>
                         <div className="flex items-center space-x-2">

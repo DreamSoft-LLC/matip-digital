@@ -37,8 +37,8 @@ export default function Landing({ history }) {
                     <span className="border-blue-500">Get <span className="text-blue-500">Started</span> </span>
                 </h1>
                 <p className="text-center px-3">
-                    We offer mining solutions through customized bots and establish and established funds across alternative strategies including diversified, strategy focused and opportunistic. We have distinct teams that are responsible for investment research, operational due diligence and risk management.
-                    As one of the world's largest alternative investment managers, Matip Bot has the talent, scale and resources to bring clients the creative and meaningful solutions they require to achieve their investment goals.
+                    We offer mining solutions through customized bots and established funds across alternative strategies including diversified, strategy focused and opportunistic. We have distinct teams that are responsible for digital mining research, operational due diligence and risk management.
+                    As one of the world's largest alternative digital mining managers, Matip Bot has the talent, scale and resources to bring clients the creative and meaningful solutions they require to achieve their  goals.
                 </p>
                 <motion.div initial={{ x: 100 }}
                     animate={{ x: 0 }}

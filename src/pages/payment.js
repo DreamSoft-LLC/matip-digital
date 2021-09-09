@@ -14,36 +14,58 @@ import Animate from '../components/animate/animate'
 export const PLANS = [
     {
         id:1,
-        name: 'Easy',
+        name: 'Basic',
         discretion: 'All the basics for businesses that are just getting started.',
         price: {
             lifetime: 100,
             monthly: 29,
             annually: 29 * 12 - 199,
         },
-        features: ['One project', 'Your dashboard'],
+        features: ['$2 Daily', 'Your dashboard'],
     },
     {
         id:2,
-        name: 'Basic',
+        name: 'Standard',
         discretion: 'Better for growing businesses that want more customers.',
         price: {
             lifetime: 200,
             monthly: 59,
             annually: 59 * 12 - 100,
         },
-        features: ['Two projects', 'Your dashboard', 'Components included', 'Advanced charts'],
+        features: ['$4 Daily', 'Your dashboard', 'Components included', 'Advanced charts'],
     },
     {
         id:3,
-        name: 'Custom',
+        name: 'Classic',
         discretion: 'Advanced features for pros who need more customization.',
         price: {
             lifetime: 500,
             monthly: 139,
             annually: 139 * 12 - 100,
         },
-        features: ['Unlimited projects', 'Your dashboard', '+300 Components', 'Chat support'],
+        features: ['$10 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
+    },
+    {
+        id:4,
+        name: 'Premiun',
+        discretion: 'Advanced features for pros who need more customization.',
+        price: {
+            lifetime: 1000,
+            monthly: 139,
+            annually: 139 * 12 - 100,
+        },
+        features: ['$20 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
+    },
+    {
+        id:5,
+        name: 'Ultra',
+        discretion: 'Advanced features for pros who need more customization.',
+        price: {
+            lifetime: 2000,
+            monthly: 139,
+            annually: 139 * 12 - 100,
+        },
+        features: ['$40 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
     },
 ]
 
@@ -70,7 +92,7 @@ export default function Payment({ history }) {
                 <Navbar transparent_null history={history} />
                 <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between mx-10 ">
                     <div className=" flex flex-col justify-center  text-white space-y-3 md:w-1/2">
-                        <p className="text-3xl lg:text-5xl font-extrabold">Pricing Plan</p>
+                        <p className="text-3xl lg:text-5xl font-extrabold">Packages</p>
                         <p className="text-xl font-semibold">You could try refreshing the page (just be sure to check the URL for errors) or head back to our homepage.</p>
                     </div>
                     <div className="text-white space-y-2 pt-5">
