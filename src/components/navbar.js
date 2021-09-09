@@ -16,7 +16,7 @@ export default function Navbar({ history, transparent_null }) {
     const [toggle, setToggle] = useState(false)
     const { path } = useRouteMatch()
     const [email, setEmail] = useState('')
-    const [isAuthToggle, setIsAuthToggle] = useState(false)
+
 
     const { isAuth, setIsAuth,isAuthToggle, setIsAuthToggle } = AuthConsumer()
 
