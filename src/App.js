@@ -2,6 +2,8 @@ import {BrowserRouter , Route} from "react-router-dom"
 import PrivateRoute from "./components/privateRoute";
 import PublicRoute from "./components/publicRoute";
 import Aboutus from "./pages/aboutus";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/adminLogin";
 import Contactus from "./pages/contactus";
 import Dashboard from "./pages/dashboard";
 import Earnings from "./pages/earnings";
@@ -22,6 +24,8 @@ function App() {
         <Route path="/contact" component={Contactus} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/payment" component={Payment} />
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/adminlogin" component={AdminLogin} />
     </BrowserRouter>
   );
 }
