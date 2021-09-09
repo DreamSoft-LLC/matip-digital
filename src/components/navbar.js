@@ -16,15 +16,15 @@ export default function Navbar({ history, transparent_null }) {
     const [toggle, setToggle] = useState(false)
     const { path } = useRouteMatch()
     const [email, setEmail] = useState('')
+    const [isAuthToggle, setIsAuthToggle] = useState(false)
 
-    const { isAuth,setIsAuth } = AuthConsumer()
+    const { isAuth, setIsAuth } = AuthConsumer()
 
     useEffect(() => {
         setEmail(localStorage.getItem('name'))
         setToggle(false)
     }, [])
 
-    const [isAuthToggle, setIsAuthToggle] = useState(false)
     const logout = () => {
         setIsAuth(false);
         localStorage.clear()
