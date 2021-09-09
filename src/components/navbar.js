@@ -42,7 +42,7 @@ export default function Navbar({ history, transparent_null }) {
                 <div className="hidden md:flex items-center space-x-5">
                     <Link to="/">Homepage</Link>
                     <Link to="/about-us">About us</Link>
-                    <Link to="/pricing">Pricing</Link>
+                    <Link to="/pricing">Packages</Link>
                     <Link to="/contact">Contact us</Link>
                     {!isAuth ? <> <Link to="/login" className="">Login</Link>
                         <Link to="/signup" className="px-7 py-2 bg-blue-500 text-blue-50 rounded">Sign up</Link>
