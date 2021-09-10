@@ -3,25 +3,28 @@ import React, { useEffect, useState } from 'react'
 import { AuthConsumer } from '../contexts/auth'
 import { API_SERVER, formatter } from '../config'
 import axios from 'axios';
+import { useAlert } from 'react-alert';
 
 export default function Account() {
     const { setIsAuth, userData, setIsAuthToggle } = AuthConsumer()
     const [wallet, setWallet] = useState('')
-
+    const  alerts  = useAlert()
     const changeAdr = () => {
         localStorage.setItem('btc', wallet)
+        alerts.success("Bitcoin wallet adrress updated")
     }
     const changePwd = (e) => {
         e.preventDefault();
         console.log(e.target);
-        if (e.target[0].value !== e.target[1].value) return;
-
+        if (e.target[0].value == ""|| e.target[1].value == "") return alerts.error("paswwords cant be empty");
+        if (e.target[0].value !== e.target[1].value) return alerts.error("paswwords don't match");
         const session_key = localStorage.getItem('session-token')
 
-        axios.post(API_SERVER + '/change-pwd', { password: e.target[0].value }, { headers: { 'auth-token': session_key } })
+        axios.post(API_SERVER + '/auth/change-pwd', { password: e.target[0].value }, { headers: { 'auth-token': session_key } })
             .then(
                 response => {
                     console.log(response.data)
+                    alerts.success(response.data.msg)
                 }
             ).catch(err => {
             })

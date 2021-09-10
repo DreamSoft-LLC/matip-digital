@@ -1,17 +1,18 @@
 import { ClipboardCopyIcon, ClipboardIcon, CurrencyDollarIcon, UserGroupIcon } from '@heroicons/react/solid'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AuthConsumer } from '../contexts/auth'
 import axios from 'axios';
 import { API_SERVER, formatter } from '../config'
+import { useAlert } from 'react-alert';
 
 const URL = `https://arcane-inlet-45366.herokuapp.com/`;
 
 export default function Referal() {
     const { setIsAuth, userData, setIsAuthToggle } = AuthConsumer()
 
-    const [downlines, setDownlines] = useState({referals:[]})
+    const [downlines, setDownlines] = useState({ referals: [] })
     const [profit, setProfit] = useState(0)
-
+    const  alerts  = useAlert()
 
     useEffect(() => {
         const session_key = localStorage.getItem('session-token')
@@ -27,7 +28,7 @@ export default function Referal() {
 
     useEffect(() => {
         let sum = 0
-        downlines.referals.map((data,index)=>{
+        downlines.referals.map((data, index) => {
             // ref plans and addup
         })
     }, [downlines])
@@ -35,7 +36,7 @@ export default function Referal() {
 
     const copyclip = (text) => {
         navigator.clipboard.writeText(text).then(function () {
-
+            alerts.success('link copied to clipboard successfully')
         }, function (err) {
 
         });
@@ -73,7 +74,7 @@ export default function Referal() {
                             <div class="flex items-start justify-between">
                                 <div class="flex flex-col space-y-2">
                                     <span class="text-gray-400 uppercase">refered users</span>
-                                    <span class="text-lg font-semibold">{ downlines.referals.length}</span>
+                                    <span class="text-lg font-semibold">{downlines.referals.length}</span>
                                 </div>
                                 <div class="p-5 bg-gray-200 rounded-md">
                                     <UserGroupIcon className="w-10 h-10 text-gray-300" />
@@ -109,7 +110,7 @@ export default function Referal() {
                         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                    { downlines.referals.length ? <table className="min-w-full divide-y divide-gray-200">
+                                    {downlines.referals.length ? <table className="min-w-full divide-y divide-gray-200">
                                         <thead className="bg-gray-50">
                                             <tr>
                                                 <th
@@ -168,9 +169,9 @@ export default function Referal() {
                                                 </tr>
                                             ))}
                                         </tbody>
-                                    </table> : 
-                                    
-                                    <p className="text-center text-gray-400 py-5">No downlines available.</p>
+                                    </table> :
+
+                                        <p className="text-center text-gray-400 py-5">No downlines available.</p>
                                     }
                                 </div>
                             </div>
