@@ -18,8 +18,7 @@ export default function Navbar({ history, transparent_null }) {
     const [email, setEmail] = useState('')
 
 
-    const { isAuth, setIsAuth,isAuthToggle, setIsAuthToggle } = AuthConsumer()
-
+    const { isAuth, setIsAuth,isAuthToggle, setIsAuthToggle ,wms, setWMS} = AuthConsumer()
 
     useEffect(() => {
         setEmail(localStorage.getItem('name'))
@@ -62,12 +61,12 @@ export default function Navbar({ history, transparent_null }) {
                                     Earnings
                                 </Link>
                                 <Link to="/dashboard/referals">
-                                    Referals
+                                    Cashback
                                 </Link>
                                 <Link to="/dashboard/account">
                                     Account
                                 </Link>
-                                <button className="flex-1 px-3 py-2 text-center text-green-500 bg-green-50 rounded-md">Withdraw</button>
+                                <button onClick={e=>{setWMS(true);setIsAuthToggle(false);}} className="flex-1 px-3 py-2 text-center text-green-500 bg-green-50 rounded-md">Withdraw</button>
                                 <button onClick={e => logout()} className="flex-1 px-3 py-2 text-center text-blue-500 bg-blue-50 rounded-md">Logout</button>
                             </motion.div>
                         </>}
@@ -98,7 +97,7 @@ export default function Navbar({ history, transparent_null }) {
                             Earnings
                         </Link>
                         <Link to="/dashboard/referals">
-                            Referals
+                            Cashback
                         </Link>
                         <Link to="/dashboard/account">
                             Account

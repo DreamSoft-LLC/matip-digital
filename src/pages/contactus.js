@@ -2,8 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
+import { useAlert } from 'react-alert'
 const cover = "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=100";
 export default function Contactus({ history }) {
+    const alerts = useAlert()
+    const onContactus = (e) => {
+        e.preventDefault();
+        if (e.target[0].value == "" || e.target[1].value == "" || e.target[2].value == "" || e.target[3].value == "") {
+            alerts.error("Please leave no field blank")
+        }
+        alerts.show("Thanks for reaching out , our support team will reach out as soon as possible")
+        e.target.reset()
+    }
     return (
         <div className=" min-h-screen flex flex-col">
             <div className="bg-blue-500 flex flex-col " style={{ minHeight: "60vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
@@ -22,7 +32,7 @@ export default function Contactus({ history }) {
 
                     <div className="border bg-white shadow p-10  my-10">
                         <div className=" text-xl font-semibold pb-3">SEND US A MESSAGE</div>
-                        <form className="flex flex-col md:flex-row border-b  md:space-x-5 py-5">
+                        <form method="POST" onSubmit={e => onContactus(e)} className="flex flex-col md:flex-row border-b  md:space-x-5 py-5">
                             <div className="flex-1">
                                 <div className="w-full flex items-center space-x-2">
                                     <div className="flex-1">
@@ -77,7 +87,7 @@ export default function Contactus({ history }) {
                 </div>
 
             </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13274.851706171537!2d73.12196108285595!3d33.71637649117642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfc04b8cff92e7%3A0x4fc0ece5b8b9d8fb!2sLAKE%20VIEW%20PARK%2C%20Islamabad%2C%20Islamabad%20Capital%20Territory%2C%20Pakistan!5e0!3m2!1sen!2sgh!4v1630381076318!5m2!1sen!2sgh" width="full" height="350" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.85707053403!2d-122.07976618475907!3d37.41685307982611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb75604546777%3A0xfa7667180440b711!2s1625%20N%20Shoreline%20Blvd%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA!5e0!3m2!1sen!2sgh!4v1631280793631!5m2!1sen!2sgh" width="full" height="350" allowfullscreen="" loading="lazy"></iframe>
             <Footer />
         </div>
     )

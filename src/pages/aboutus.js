@@ -64,23 +64,9 @@ export default function Aboutus({ history }) {
                                 <p class="text-xs text-gray-500 text-center mt-3 px-8">
                                     Mountain View, CA 94043, USA
                                 </p>
-                                <div class="mt-6 pt-3 flex flex-wrap mx-5 border-t items-center">
-                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
-                                        Sebastianbb12@mail.com
-                                    </div>
-                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
-                                        +1-555-1545-452
-                                    </div>
-                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
-                                        @Sebasti12
-                                    </div>
-                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
-                                        +1-555-1545-452
-                                    </div>
-                                    <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
-                                        +1-555-1545-452
-                                    </div>
-
+                                <div class="mt-6 pt-3 flex flex-wrap mx-5 border-t items-center space-x-3">
+                                    <span className="font-medium">Email:</span>
+                                    <span className="font-medium">Sebastianbb12@mail.com</span>
                                 </div>
 
                             </div>

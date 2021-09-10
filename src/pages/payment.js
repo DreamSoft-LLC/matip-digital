@@ -3,7 +3,7 @@ import ExchangeCard from '../components/exchangecard'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import { motion } from "framer-motion"
-import { API_SERVER } from '../config'
+import { API_SERVER, formatter } from '../config'
 import axios from 'axios'
 import { AuthConsumer } from '../contexts/auth'
 import { ChevronDownIcon } from '@heroicons/react/solid'
@@ -13,59 +13,64 @@ import Animate from '../components/animate/animate'
 
 export const PLANS = [
     {
-        id:1,
+        id: 1,
         name: 'Basic',
-        discretion: 'All the basics for businesses that are just getting started.',
+        discretion: 'All your earnings for this package is outlned below',
         price: {
             lifetime: 100,
             monthly: 29,
             annually: 29 * 12 - 199,
         },
-        features: ['$2 Daily', 'Your dashboard'],
+        features: [`${formatter.format(2)} Daily`, `${formatter.format(2 * 7)} weekly`, `${formatter.format(2 *( 7*4))} Monthly`, `${formatter.format(2 *( 7*4*12))} Yearly`],
+        pct: 2
     },
     {
-        id:2,
+        id: 2,
         name: 'Standard',
-        discretion: 'Better for growing businesses that want more customers.',
+        discretion:  'All your earnings for this package is outlned below',
         price: {
             lifetime: 200,
             monthly: 59,
             annually: 59 * 12 - 100,
         },
-        features: ['$4 Daily', 'Your dashboard', 'Components included', 'Advanced charts'],
+        features: [`${formatter.format(4)} Daily`,  `${formatter.format(4 * 7)} weekly`, `${formatter.format(4 *( 7*4))} Monthly`, `${formatter.format(4 *( 7*4*12))} Yearly`],
+        pct: 4
     },
     {
-        id:3,
+        id: 3,
         name: 'Classic',
-        discretion: 'Advanced features for pros who need more customization.',
+        discretion:  'All your earnings for this package is outlned below',
         price: {
             lifetime: 500,
             monthly: 139,
             annually: 139 * 12 - 100,
         },
-        features: ['$10 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
+        features: [`${formatter.format(10)} Daily`,  `${formatter.format(10 * 7)} weekly`, `${formatter.format(10 *( 7*4))} Monthly`, `${formatter.format(10 *( 7*4*12))} Yearly`],
+        pct: 10
     },
     {
-        id:4,
+        id: 4,
         name: 'Premiun',
-        discretion: 'Advanced features for pros who need more customization.',
+        discretion:  'All your earnings for this package is outlned below',
         price: {
             lifetime: 1000,
             monthly: 139,
             annually: 139 * 12 - 100,
         },
-        features: ['$20 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
+        features: [`${formatter.format(20)} Daily`,  `${formatter.format(20 * 7)} weekly`, `${formatter.format(20 *( 7*4))} Monthly`, `${formatter.format(20 *( 7*4*12))} Yearly`],
+        pct: 20
     },
     {
-        id:5,
+        id: 5,
         name: 'Ultra',
-        discretion: 'Advanced features for pros who need more customization.',
+        discretion:  'All your earnings for this package is outlned below',
         price: {
             lifetime: 2000,
             monthly: 139,
             annually: 139 * 12 - 100,
         },
-        features: ['$40 Daily', 'Your dashboard', '+300 Components', 'Chat support'],
+        features: [`${formatter.format(40)} Daily`,  `${formatter.format(40 * 7)} weekly`, `${formatter.format(40 *( 7*4))} Monthly`, `${formatter.format(40 *( 7*4*12))} Yearly`],
+        pct: 40
     },
 ]
 
@@ -81,7 +86,7 @@ export default function Payment({ history }) {
         setSelected(index)
         setLoading(true)
         const session_key = localStorage.getItem('session-token')
-        axios.post(API_SERVER + '/payment', { ...plan}, {
+        axios.post(API_SERVER + '/payment', { ...plan }, {
             headers: { 'auth-token': session_key }
         }).then(res => { setLoading(true); window.location.href = res.data.charge.hosted_url }).catch(err => { console.log(err); setLoading(true) })
     }
@@ -93,7 +98,7 @@ export default function Payment({ history }) {
                 <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between mx-10 ">
                     <div className=" flex flex-col justify-center  text-white space-y-3 md:w-1/2">
                         <p className="text-3xl lg:text-5xl font-extrabold">Packages</p>
-                        <p className="text-xl font-semibold">You could try refreshing the page (just be sure to check the URL for errors) or head back to our homepage.</p>
+                        <p className="text-xl font-semibold">Matip Digital offers a variety of packages to meet your needs. The package you choose will determine your income rate.</p>
                     </div>
                     <div className="text-white space-y-2 pt-5">
                         <label className="font-semibold">Currency</label>
@@ -130,7 +135,7 @@ function SelectPlan({ setSelected, loading, selected }) {
 
     return (
         <div className="mx-5">
-            <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
+            <div className="flex flex-wrap  flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 ">
                 {
                     PLANS.map((data, index) => {
                         return <>
@@ -140,7 +145,7 @@ function SelectPlan({ setSelected, loading, selected }) {
                                     <span
                                         class="text-4xl font-medium tracking-tight "
                                     >${data.price.lifetime}</span>
-                                    <span class="text-gray-400"> /Lifetime</span>
+                                    <span class="text-gray-400"></span>
                                 </div>
 
 
