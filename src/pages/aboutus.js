@@ -64,7 +64,7 @@ export default function Aboutus({ history }) {
                                     <AtSymbolIcon className="w-full h-full text-blue-500" />
                                 </div>
 
-                                <h2 class="mt-4 font-bold text-xl">support@horizonlinelimited.com</h2>
+                                <h2 class="mt-4 font-bold text-xl">support@matipdigital.com</h2>
 
                                 <p class="text-xs text-gray-500 text-center mt-3 px-8">
                                 for any issues or clearifications
