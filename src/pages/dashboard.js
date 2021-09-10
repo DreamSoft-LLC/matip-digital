@@ -136,18 +136,6 @@ function Earnings() {
 }
 
 function DashboardComp() {
-    const people = [
-        {
-            name: 'Withdrawal',
-            title: '$100.00',
-            department: 'Optimization',
-            role: '12/04/2021',
-            email: 'jane.cooper@example.com',
-            image:
-                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-        },
-        // More people...
-    ]
     const { setIsAuth, userData, setIsAuthToggle } = AuthConsumer()
 
     useEffect(() => {
