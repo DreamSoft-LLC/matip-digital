@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/navbar'
 import { motion } from "framer-motion"
 import { API_SERVER } from '../config'
 import axios from 'axios'
 import { AuthConsumer } from '../contexts/auth'
 import Register from './register'
+import { useLocation } from 'react-router'
 
 export default function Signup({ history }) {
+
+    const { search } = useLocation()
+
+    const [referal, setReferal] = useState('')
+
     const [step, setStep] = useState(0)
+
+    useEffect(() => {
+        if (search) {
+            setReferal(search.split("?ref=")[1]);
+        }
+    }, [])
+
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-600 to-blue-500">
             <Navbar history={history} />
@@ -15,7 +28,7 @@ export default function Signup({ history }) {
             <div className="flex-1">
 
                 {step === 0 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="flex-1">
-                    <Register step={step} setStep={setStep} />
+                    <Register step={step} referal={referal} setStep={setStep} />
                 </motion.div>}
                 {step === 1 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ left: '200vw' }} transition={{ duration: 2 }} className="container mx-auto">
                     <div className="flex items-center justify-center space-x-3">

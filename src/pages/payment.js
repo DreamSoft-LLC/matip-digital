@@ -93,7 +93,7 @@ export default function Payment({ history }) {
                 <div className="flex-1 flex flex-col md:flex-row items-center md:justify-between mx-10 ">
                     <div className=" flex flex-col justify-center  text-white space-y-3 md:w-1/2">
                         <p className="text-3xl lg:text-5xl font-extrabold">Packages</p>
-                        <p className="text-xl font-semibold">You could try refreshing the page (just be sure to check the URL for errors) or head back to our homepage.</p>
+                        <p className="text-xl font-semibold">Matip Digital offers a variety of plans to meet your needs. The plan you choose will determine your income rate.</p>
                     </div>
                     <div className="text-white space-y-2 pt-5">
                         <label className="font-semibold">Currency</label>
@@ -130,7 +130,7 @@ function SelectPlan({ setSelected, loading, selected }) {
 
     return (
         <div className="mx-5">
-            <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
+            <div className="flex flex-wrap  flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 ">
                 {
                     PLANS.map((data, index) => {
                         return <>

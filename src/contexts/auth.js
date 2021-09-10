@@ -11,6 +11,8 @@ export function AuthProvider({ children }) {
 
     const [userData, setUserData] = useState()
     const [isAuthToggle, setIsAuthToggle] = useState(false)
+
+    const [wms,setWMS] = useState(false)
     // check localstorage for session
     const checkAuth = () => {
         const session_key = localStorage.getItem('session-token')
@@ -37,7 +39,7 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ isAuth,  setIsAuth,userData, setUserData ,isAuthToggle, setIsAuthToggle}}>
+        <AuthContext.Provider value={{ isAuth,  setIsAuth,userData, setUserData ,isAuthToggle, setIsAuthToggle,wms,setWMS}}>
             {children}
         </AuthContext.Provider>
     )

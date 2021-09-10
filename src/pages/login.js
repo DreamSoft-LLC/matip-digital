@@ -7,13 +7,13 @@ import Animate from '../components/animate/animate'
 import Navbar from '../components/navbar'
 import { API_SERVER } from '../config';
 import { AuthConsumer } from '../contexts/auth';
-
+import { useAlert } from 'react-alert'
 const cover = "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=100";
 
 export default function Login({ history }) {
 
     const { setIsAuth } = AuthConsumer()
-
+    const alert = useAlert()
     const [loading, setloading] = useState(false)
 
     function login(e) {
@@ -26,8 +26,8 @@ export default function Login({ history }) {
             console.log(e.data)
             localStorage.setItem('session-token', e.data.token)
             setIsAuth(true);
-        }).catch(err => {
-
+        }).catch(error => {
+           if(error.response.data) alert.error(error.response.data)
         }).finally(()=>setloading(false))
     }
 

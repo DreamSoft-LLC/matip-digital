@@ -36,7 +36,10 @@ const securityQuestion = [
     }
 ]
 
-function Register({ step, setStep }) {
+function Register({ step, setStep, history, referal }) {
+
+
+
     const { setIsAuth } = AuthConsumer()
     const signup = (e) => {
         if (e.target[1].value === "" || e.target[2].value === "" || e.target[3].value === "" || e.target[4].value === "" || e.target[6].value === "") return;
@@ -48,7 +51,8 @@ function Register({ step, setStep }) {
             email: e.target[2].value,
             password: e.target[3].value,
             securityQuestion: securityQuestion[e.target[5].value].quest,
-            securityAnswer: e.target[6].value
+            securityAnswer: e.target[6].value,
+            referal
         }).then((res) => {
             // account created successfully
             console.log(res.data)
@@ -88,6 +92,12 @@ function Register({ step, setStep }) {
                                 Lorem ipsum is placeholder text commonly used in the graphic, print,
                                 and publishing industries for previewing layouts and visual mockups
                             </div>
+                            {referal && <div className="flex mt-3">
+                                <span className="bg-white font-semibold px-2 py-1 rounded-md my-2 text-blue-400 text-sm flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                    </svg>: {referal}</span>
+                            </div>}
                         </div>
                         <Animate />
                     </div>

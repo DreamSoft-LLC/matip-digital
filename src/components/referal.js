@@ -37,7 +37,7 @@ export default function Referal() {
                 <div className="flex flex-col md:flex-row items-center  mx-7">
                     <div className="bg-white mt-3  md:w-1/3 ">
                         <div className="p-3">
-                            <h1 className="text-4xl my-1 text-gray-700 font-semibold"> <span>3%</span> Referal Bonus</h1>
+                            <h1 className="text-4xl my-1 text-gray-700 font-semibold"> <span>5%</span> Referal Cashback</h1>
                             <p className="mb-3 text-sm text-gray-600 font-semibold">Help a friend to register buy copying and sending them the link below to recieve 3% bonus on the bot they purchase.</p>
                         </div>
                     </div>

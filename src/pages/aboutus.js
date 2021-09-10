@@ -28,47 +28,19 @@ export default function Aboutus({ history }) {
                     </h1>
                     <div>
                         <p>
-                            We offer investment solutions through customized portfolios, co-investments,
-                            direct investments and established funds across alternative strategies including diversified,
-                            strategy focused and opportunistic. We have distinct teams that are responsible for investment research,
-                            operational due diligence and risk management. As one of the world's largest alternative investment managers,
-                            Horizonline has the talent, scale and resources to bring clients the creative and meaningful
-                            solutions they require to achieve their investment goals.
-                            We believe that investing responsibly is essential to achieve
-                            the best possible risk-adjusted returns for our unit holders over time.
-                            Sustainability factors are often a signal of management quality, particularly over the long term.
-                            We dare to take unpopular choices, as long as they are in the clients' best interests.
-                            We are aligned with our clients – when we do well, clients do well.
-                            Our objective is to provide the best possible risk-adjusted returns,
+                            We offer mining solutions through customized bots and established funds across alternative strategies including diversified,
+                             strategy focused and opportunistic. We have distinct teams that are responsible for digital mining research,
+                              operational due diligence and risk management. As one of the world's largest alternative digital mining managers,
+                               Matip Bot has the talent, scale and resources to bring clients the creative and meaningful solutions they require to achieve their goals.
                         </p>
                     </div>
                 </div>
-                <div className="my-10 px-10">
-                    <h1 className="text-4xl font-bold pt-5 text-center my-5">
-                        <span className="border-blue-500 uppercase">WHY CHOOSE <span className="text-blue-500">US</span> </span>
-                    </h1>
-                    <div>
-                        <p>
-                            We offer investment solutions through customized portfolios, co-investments,
-                            direct investments and established funds across alternative strategies including diversified,
-                            strategy focused and opportunistic. We have distinct teams that are responsible for investment research,
-                            operational due diligence and risk management. As one of the world's largest alternative investment managers,
-                            Horizonline has the talent, scale and resources to bring clients the creative and meaningful
-                            solutions they require to achieve their investment goals.
-                            We believe that investing responsibly is essential to achieve
-                            the best possible risk-adjusted returns for our unit holders over time.
-                            Sustainability factors are often a signal of management quality, particularly over the long term.
-                            We dare to take unpopular choices, as long as they are in the clients' best interests.
-                            We are aligned with our clients – when we do well, clients do well.
-                            Our objective is to provide the best possible risk-adjusted returns,
-                        </p>
-                    </div>
-                </div>
+            
             </div>
 
             <>
                 <div class="relative bg-gradient-to-r from-purple-800 to-blue-500 p-5 lg:p-20">
-                    <Animate/>
+                    <Animate />
                     <div class='md:flex'>
                         <div class="hidden md:w-1/2 md:flex">
 
