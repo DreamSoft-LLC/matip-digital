@@ -2,8 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
+import { useAlert } from 'react-alert'
 const cover = "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=100";
 export default function Contactus({ history }) {
+    const alerts = useAlert()
+    const onContactus = (e) => {
+        e.preventDefault();
+        if (e.target[0].value == "" || e.target[1].value == "" || e.target[2].value == "" || e.target[3].value == "") {
+            alerts.error("Please leave no field blank")
+        }
+        alerts.show("Thanks for reaching out , our support team will reach out as soon as possible")
+        e.target.reset()
+    }
     return (
         <div className=" min-h-screen flex flex-col">
             <div className="bg-blue-500 flex flex-col " style={{ minHeight: "60vh", backgroundImage: `url(${cover})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#00000094', backgroundBlendMode: 'multiply', backgroundSize: "cover" }}>
@@ -22,7 +32,7 @@ export default function Contactus({ history }) {
 
                     <div className="border bg-white shadow p-10  my-10">
                         <div className=" text-xl font-semibold pb-3">SEND US A MESSAGE</div>
-                        <form className="flex flex-col md:flex-row border-b  md:space-x-5 py-5">
+                        <form method="POST" onSubmit={e => onContactus(e)} className="flex flex-col md:flex-row border-b  md:space-x-5 py-5">
                             <div className="flex-1">
                                 <div className="w-full flex items-center space-x-2">
                                     <div className="flex-1">

@@ -104,7 +104,7 @@ export default function Dashboard({ history }) {
                         <div className="flex-1">
 
                         </div>
-                        <button className="bg-blue-500  text-white font-semibold px-3 py-2 rounded">Upgrade</button>
+                        <Link to="/pricing" className="bg-blue-500  text-white font-semibold px-3 py-2 rounded">Upgrade</Link>
                     </div>
 
                     <Route path={url} exact component={DashboardComp} />
@@ -251,16 +251,16 @@ function DashboardComp() {
                                                         <div className="flex items-center">
 
 
-                                                            <div className="text-sm font-medium text-gray-900">{data.discription}</div>
+                                                            <div className="text-sm font-medium text-gray-900 uppercase">{data.discription}</div>
 
 
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <div className="text-sm text-gray-900">${data.amount}</div>
+                                                        <div className="text-sm text-gray-900">{formatter.format(data.amount)}</div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className={`${(data.status == "failed") && "bg-red-100 text-red-800"} px-2 inline-flex text-xs leading-5 font-semibold rounded-full `}>
+                                                        <span className={`${(data.status == "failed") && "bg-red-100 text-red-800 "} ${(data.status == "confirmed") && "bg-green-100 text-green-800 "} ${(data.status == "Pending") && "bg-yellow-100 text-yellow-800 "} px-2 inline-flex text-xs leading-5 font-semibold rounded-full `}>
                                                            {data.status }
                                                         </span>
                                                     </td>
