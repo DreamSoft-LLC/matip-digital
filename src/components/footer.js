@@ -44,7 +44,7 @@ export default function Footer() {
                 </div>
                 <div className="bg-blue-800  md:px-10">
                     <div className="container mx-auto text-white flex p-3 items-center justify-between">
-                        <div className="text-center">Copyrights © 2020 Company Name. All Rights Reserved</div>
+                        <div className="text-center">Copyrights © 2020 Matip Digital. All Rights Reserved</div>
                         <div className="md:flex items-center space-x-3 font-semibold hidden">
                             <Link to="/">Homepage</Link>
                             <Link to="/about-us">About us</Link>
