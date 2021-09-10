@@ -5,7 +5,7 @@ import ExchangeCard from '../components/exchangecard';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar'
 import founder from '../assets/images/bg3.jpg'
-import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { CubeIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 
 const cover = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80";
 
@@ -46,19 +46,23 @@ export default function Aboutus({ history }) {
                 <div class="relative bg-gradient-to-r from-purple-800 to-blue-500 p-5 lg:p-20">
                     <Animate />
                     <div class='md:flex'>
-                        <div class="hidden md:w-1/2 md:flex">
-
+                        <div class="hidden md:w-1/2 md:flex text-white flex-col space-y-4 justify-center">
+                            <div className="flex space-x-3 items-center">
+                                <CubeIcon className="h-20 w-20" />
+                                <div className="text-5xl font-bold uppercase">MATIP DIGITAL</div>
+                            </div>
+                            <div className="text-5xl font-bold capitalize pl-3">Leave smart. Get it automated.</div>
                         </div>
                         <div class="w-full md:w-6/12 relative">
-                            <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-md">
+                            <div class="flex flex-col items-center justify-center bg-white p-4 py-20 shadow rounded-md">
                                 <div class="inline-flex overflow-hidden h-16  w-16 ">
                                     <LocationMarkerIcon className="w-full h-full text-blue-500" />
                                 </div>
 
-                                <h2 class="mt-4 font-bold text-xl u capitalize">17031 Chesterfield Estates Ct</h2>
+                                <h2 class="mt-4 font-bold text-xl u capitalize">1625 N Shoreline Blvd,</h2>
 
                                 <p class="text-xs text-gray-500 text-center mt-3 px-8">
-                                Chesterfield, MO, 63005
+                                    Mountain View, CA 94043, USA
                                 </p>
                                 <div class="mt-6 pt-3 flex flex-wrap mx-5 border-t items-center">
                                     <div class="text-xs cursor-pointer mr-2 my-1 uppercase tracking-wider border px-5 py-1 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100">
