@@ -1,12 +1,18 @@
-import {BrowserRouter , Route} from "react-router-dom"
+import { BrowserRouter, Route } from "react-router-dom"
+import PrivateRoute from "./components/privateRoute";
+import PublicRoute from "./components/publicRoute";
+import { DataProvider } from "./contexts/keeper";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/adminLogin";
 
 function App() {
   return (
     <BrowserRouter >
-        <Route exact  path="/" component={AdminLogin} />
-        <Route path="/admin" component={AdminDashboard} />
+      <PublicRoute restricted exact path="/" component={AdminLogin} />
+      <PublicRoute restricted exact path="/login" component={AdminLogin} />
+      <DataProvider>
+        <PrivateRoute path="/admin" component={AdminDashboard} />
+      </DataProvider>
     </BrowserRouter>
   );
 }

@@ -12,25 +12,17 @@ export function AuthProvider({ children }) {
     const [userData, setUserData] = useState()
     const [isAuthToggle, setIsAuthToggle] = useState(false)
 
-    const [wms,setWMS] = useState(false)
+    const [wms, setWMS] = useState(false)
     // check localstorage for session
     const checkAuth = () => {
-        const session_key = localStorage.getItem('session-token')
+        const session_key = localStorage.getItem('auth-login')
         console.log(session_key)
         if (session_key == null) {
             setIsAuth(false);
             return;
+        } else {
+            setIsAuth(true)
         }
-        // validate session key;
-        axios.get(API_SERVER + '/dashboard', { headers: { 'auth-token': session_key } }).then(response => {
-            // set isAuth to true 
-            console.log(response.data);
-            setIsAuth(true);
-            return;
-        }).catch(error => {
-            console.log(error)
-            return;
-        })
     }
 
 
@@ -39,7 +31,7 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ isAuth,  setIsAuth,userData, setUserData ,isAuthToggle, setIsAuthToggle,wms,setWMS}}>
+        <AuthContext.Provider value={{ isAuth, setIsAuth, userData, setUserData, isAuthToggle, setIsAuthToggle, wms, setWMS }}>
             {children}
         </AuthContext.Provider>
     )
