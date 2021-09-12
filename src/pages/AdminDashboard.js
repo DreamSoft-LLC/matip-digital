@@ -1,7 +1,8 @@
-import { BellIcon, CheckIcon, CreditCardIcon, PlayIcon, QrcodeIcon, UsersIcon, XIcon } from "@heroicons/react/solid";
+import { BellIcon, CashIcon, CheckIcon, CreditCardIcon, QrcodeIcon, UsersIcon, XIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { Switch, Route, NavLink, useRouteMatch, Link } from "react-router-dom";
 import avatar from "../assets/images/bg3.jpg";
+import { formatter } from "../config";
 import './AdminDashboard.css'
 
 export default function AdminDashboard() {
@@ -26,18 +27,34 @@ export default function AdminDashboard() {
               </div>
               <div class="body border overflow-y-auto h-96">
                 <div class="messages">
+                  {/* msg */}
+                  <div class="border-l-2 border-blue-500 tab shadow-sm mb-3">
+                    <div class="border-l-2 border-transparent relative">
+                      <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1" />
 
-                  <div class="px-4 py-4 border-l-2 border-blue-500 flex flex-row space-x-5 text-sm text-gray-600 hover:bg-gray-100 justify-between items-center mb-1">
-                    <div className="">
-                      <Link to={`${url}/users`} class="name font-medium mr-2 text-blue-500 flex-none capitalize" onClick={e => setModal(!modal)}>Thomas Shelby</Link>
-                      <div class="time text-xs mt-1 text-gray-500 font-thin flex-none ml-auto">1 hour ago</div>
-                    </div>
-                    <div className="flex space-x-5">
-                      <div class="cursor-pointer text-green-500">Approve</div>
-                      <div class="cursor-pointer text-red-500">Decline</div>
+                      <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
+                        <span class="text-grey-darkest font-medium">
+                          Thomas Shelby
+                        </span>
+                        <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
+                          <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="6 9 12 15 18 9">
+                            </polyline>
+                          </svg>
+                        </div>
+
+                      </header>
+                      <div class="tab-content px-10 text-sm">
+
+                        <form class="py-3 text-grey-darkest flex items-center border-t border-gray-100">
+                          <input type="text" placeholder="Enter message here" className="w-full px-3 py-2 focus:outline-none" />
+                          <button type="submit" className="text-white cursor-pointer bg-blue-500 py-2 px-3 rounded-sm">reply</button>
+                        </form>
+
+                      </div>
                     </div>
                   </div>
-
+                  {/* end of msg */}
                 </div>
 
                 {/* <div class="py-2 flex text-sm border text-gray-400 cursor-pointer bg-gray-100 hovay-200">
@@ -59,28 +76,20 @@ export default function AdminDashboard() {
 
           <div class="flex flex-row items-center justify-between border-b border-gray-100 pb-3">
             <span class="text-lg font-semibold capitalize dark:text-gray-300">admin</span>
-            <span class="relative " onClick={e => setModal(!modal)}>
-              <BellIcon className="w-6 h-7 text-gray-500 cursor-pointer" />
-            </span>
+
           </div>
 
           <div class="mt-5">
             <img class="h-12 w-12 rounded-full object-cover" src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png" alt="admin profile" />
-            <h2 class="mt-4 text-xl dark:text-gray-300 font-medium capitalize">
-              Hello Enoshima
+            <h2 class="mt-4 text dark:text-gray-300 font-medium capitalize">
+              Hello ADMIN
             </h2>
 
           </div>
 
           <div class="flex flex-col mt-3 text-gray-600 space-y-5 justify-between border-t border-gray-100 pt-3">
-            {/* <NavLink exact strict to={`${url}`} class="flex-1 flex flex-row space-x-3 items-center" activeClassName="flex bg-white p-2 rounded-sm">
-              <QrcodeIcon className="w-6 h-6" />
-              <span class="capitalize font-medium ">
-                dashboard
-              </span>
-            </NavLink> */}
 
-            <NavLink exact strict to={`${url}`} className="flex items-center space-x-4 w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
+            <NavLink exact strict to={`${url}`} className="flex items-center w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
               <div className="px-5 flex items-center space-x-4">
                 <QrcodeIcon className="w-6 h-6" />
                 <p>Dashboard</p>
@@ -94,17 +103,17 @@ export default function AdminDashboard() {
               </div>
             </NavLink>
 
-            <NavLink exact strict to={`${url}/withdrawal`} className="flex items-center space-x-4 w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
+            <NavLink exact strict to={`${url}/account`} className="flex items-center space-x-4 w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
               <div className="px-5 flex items-center space-x-4">
-                <UsersIcon className="w-6 h-6" />
-                <p>Withdrawal</p>
+                <CashIcon className="w-6 h-6" />
+                <p>Account</p>
               </div>
             </NavLink>
 
-            <NavLink exact strict to={`${url}/payment`} className="flex items-center space-x-4 w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
+            <NavLink exact strict to={`${url}/requests`} className="flex items-center space-x-4 w-full " activeClassName="rounded-l-full rounded-tr-full text-gray-200 py-3 bg-indigo-500">
               <div className="px-5 flex items-center space-x-4">
                 <CreditCardIcon className="w-6 h-6" />
-                <p>Payments</p>
+                <p>Requests</p>
               </div>
             </NavLink>
 
@@ -121,13 +130,22 @@ export default function AdminDashboard() {
         </nav>
 
         <main class="flex-1 flex flex-col bg-white dark:bg-gray-700 transition duration-500 ease-in-out overflow-y-auto  px-10">
+          <div className="border-b border-gray-200 py-3 px-10 -mx-10 flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className="font-medium">Wallet:</span>
+              <span className="font-medium">{formatter.format(300)}</span>
+            </div>
+            <span class="relative " onClick={e => setModal(!modal)}>
+              <BellIcon className="w-6 h-7 text-gray-500 cursor-pointer" />
+            </span>
+          </div>
           <Switch>
             <Route exact path={`${path}`} component={DashboardItems} />
             <Route exact path={`${path}/users`} component={UserTable} />
             <Route exact path={`${path}/users/userinfo/:id`} component={UserInfo} />
-            <Route exact path={`${path}/payment`} component={PaymentList} />
+            <Route exact path={`${path}/requests`} component={Requests} />
             <Route exact path={`${path}/payuser`} component={PayUser} />
-            <Route exact path={`${path}/withdrawal`} component={Withdrawal} />
+            <Route exact path={`${path}/account`} component={Account} />
           </Switch>
         </main>
       </div>
@@ -147,95 +165,77 @@ function DashboardItems() {
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">referal bonus</span>
-              <span class="text-lg font-semibold">100,221</span>
+              <span class="text-gray-400">Total subscriptions</span>
+              <span class="text-lg font-semibold">{formatter.format(100)}</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">refered users</span>
-              <span class="text-lg font-semibold">100,221</span>
+              <span class="text-gray-400">Total withdrawals</span>
+              <span class="text-lg font-semibold">{formatter.format(100)}</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
 
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">refered users</span>
+              <span class="text-gray-400">Today's withdrawals</span>
               <span class="text-lg font-semibold">100,221</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
 
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">refered users</span>
-              <span class="text-lg font-semibold">100,221</span>
+              <span class="text-gray-400">Users</span>
+              <span class="text-lg font-semibold">50</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
+
 
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">refered users</span>
-              <span class="text-lg font-semibold">100,221</span>
+              <span class="text-gray-400">Requests</span>
+              <span class="text-lg font-semibold">10</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
-
         <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
           <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-              <span class="text-gray-400">refered users</span>
-              <span class="text-lg font-semibold">100,221</span>
+              <span class="text-gray-400">Wallet Balance</span>
+              <span class="text-lg font-semibold">{formatter.format(100)}</span>
             </div>
             <div class="p-10 bg-gray-200 rounded-md"></div>
           </div>
           <div>
-            <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">
-              14%
-            </span>
-            <span>from 2019</span>
+            {/* <span class="inline-block px-2 text-sm text-white bg-green-300 rounded">10%</span> */}
           </div>
         </div>
       </div>
@@ -473,59 +473,30 @@ function PayUser() {
 
 
 
-function Withdrawal() {
+function Account() {
   return (
     <>
-      <div class="min-w-screen min-h-screen  flex items-center justify-center px-5 pb-10 pt-16">
+      <div class="relative min-w-screen min-h-screen  flex items-center justify-center px-5 pb-10">
         <div class="w-full mx-auto p-5 text-gray-700 lg:w-4/5">
-          <div class="w-full pt-1 pb-5">
-            <div class="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
-              <i class="mdi mdi-credit-card-outline text-3xl"></i>
-            </div>
-          </div>
+
           <div class="mb-10">
-            <h1 class="text-center font-bold text-xl uppercase">
+            <h1 class="text-center font-medium text-3xl uppercase">
               Withdraw Fund
             </h1>
           </div>
-          <div class="mb-3 flex -mx-2">
-
-
-          </div>
-          <div class="mb-3">
-            <label class="font-bold text-sm mb-2 ml-1">Bitcoin Address</label>
+       
+          <div class="mb-3 space-y-2">
+            <label class="font-bold text-sm mb-2 ml-1">Bitcoin Wallet</label>
             <div>
-              <input
-                class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                placeholder="1FfmbHfnpaZjKFvyi1okTjJJusN455paPH"
-                type="text"
-              />
+              <input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="1FfmbHfnpaZjKFvyi1okTjJJusN455paPH" type="text"/>
             </div>
           </div>
 
-          <div class="mb-3 -mx-2 flex items-end">
-            <div class="px-2 w-1/2">
-              <label class="font-bold text-sm mb-2 ml-1">Amount</label>
-              <div>
-                <select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                  <option value="02">100</option>
-                  <option value="03">300</option>
-                  <option value="04">500</option>
-                  <option value="05">1000</option>
-                </select>
-              </div>
-            </div>
-            <div class="px-2 w-1/2">
-              <label class="font-bold text-sm mb-2 ml-1">Security code</label>
-              <div>
-                <input
-                  class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                  placeholder="000"
-                  type="text"
-                />
-              </div>
-            </div>
+          <div class="mb-3 space-y-2">
+              <label class="font-bold text-sm mb-2 ml-1">Enter Amount</label>
+              <input type="text" placeholder="100" className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"/>
           </div>
+
           <div>
             <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold mt-10">
               <i class="mdi mdi-lock-outline mr-1"></i>WITHDRAW
@@ -634,12 +605,12 @@ function UserTable() {
 }
 
 
-function PaymentList() {
+function Requests() {
   return (
     <div className="p-5">
 
       <div class="p-2 py-3 capitalize text-2xl font-medium text-center border-t-8 border-indigo-600 w-full rounded-tl-full rounded-br-lg shadow-md hover:shadow-lg focus:outline-none">
-        User Payment List
+        Requests List
       </div>
 
       <div class="tabs shadow row">
@@ -668,48 +639,8 @@ function PaymentList() {
               </div>
 
               <div class="py-3 text-grey-darkest flex justify-between items-center border-t border-gray-100">
-                <span className="">Amount:</span>
-                <span className="">USD 100</span>
-              </div>
-
-              <div class="py-3 text-grey-darkest flex justify-between items-center border-t border-gray-100">
-                <span className="">Action:</span>
-                <button className="text-green-400 cursor-pointer border border-green-400 rounded px-5 py-1 flex items-center space-x-2">
-                  <span>Confirm</span>
-                  <CheckIcon className="w-4 h-4 text-green-400" />
-                </button>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="border-b tab shadow-sm mb-3">
-          <div class="border-l-2 border-transparent relative">
-            <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1" />
-
-            <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
-              <span class="text-grey-darkest font-medium">
-                Thomas Shelby
-              </span>
-              <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
-                <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="6 9 12 15 18 9">
-                  </polyline>
-                </svg>
-              </div>
-
-            </header>
-            <div class="tab-content px-10 text-sm">
-
-              <div class="py-3 text-grey-darkest flex justify-between items-center border-t border-gray-100">
-                <span className="">Bitcoin ID:</span>
-                <span className="">1FfmbHfnpaZjKFvyi1okTjJJusN455paPH</span>
-              </div>
-
-              <div class="py-3 text-grey-darkest flex justify-between items-center border-t border-gray-100">
-                <span className="">Amount:</span>
-                <span className="">USD 100</span>
+                <span className="">Request:</span>
+                <span className="">{formatter.format(100)}</span>
               </div>
 
               <div class="py-3 text-grey-darkest flex justify-between items-center border-t border-gray-100">
